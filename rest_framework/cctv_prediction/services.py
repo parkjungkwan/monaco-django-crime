@@ -2,6 +2,7 @@ from rest_framework.common.entity import FileDTO
 from rest_framework.common.services import Reader, Printer
 import pandas as pd
 import numpy as np
+from sklearn import preprocessing
 '''
 살인 발생,살인 검거,강도 발생,강도 검거,강간 발생,강간 검거,절도 발생,절도 검거,폭력 발생,폭력 검거
 '''
@@ -105,13 +106,69 @@ class Service(Reader):
          """
         cctv_pop.to_csv('./saved_data/cctv_pop.csv')
 
+    def save_police_norm(self):
+        f = self.f
+        r = self.r
+        p = self.p
+        f.context = './saved_data/'
+        f.fname = 'police_pos'
+        police_pos = r.csv(f)
+        print(' ---- 0 ------')
+        print(police_pos.columns)
+        police = pd.pivot_table(police_pos, index='구별', aggfunc=np.sum)
+        print(' ---- 1 ------')
+        print(police.columns)
+        police['살인검거율'] = (police['살인 검거'].astype(int) / police['살인 발생'].astype(int)) * 100
+        police['강도검거율'] = (police['강도 검거'].astype(int) / police['강도 발생'].astype(int)) * 100
+        police['강간검거율'] = (police['강간 검거'].astype(int) / police['강간 발생'].astype(int)) * 100
+        police['절도검거율'] = (police['절도 검거'].astype(int) / police['절도 발생'].astype(int)) * 100
+        police['폭력검거율'] = (police['폭력 검거'].astype(int) / police['폭력 발생'].astype(int)) * 100
+        print(f'type : {type(police)}')
+        police.drop(columns={'살인 검거', '강도 검거','강간 검거','절도 검거','폭력 검거'}, axis=1, inplace=True)
+
+        print(' ---- 2 ------')
+        print(police.columns)
+        for i in self.crime_rate_columns:
+            police.loc[police[i] > 100, 1] = 100 # 데이터값의 기간 오류로 100을 넘으면 100으로 계산
+        police.rename(columns={
+            '살인 발생': '살인',
+            '강도 발생': '강도',
+            '강간 발생': '강간',
+            '절도 발생': '절도',
+            '폭력 발생': '폭력'
+        } , inplace=True)
+
+        x = police[self.crime_rate_columns].values
+        min_max_scalar = preprocessing.MinMaxScaler()
+        """
+          스케일링은 선형변환을 적용하여
+          전체 자료의 분포를 평균 0, 분산 1이 되도록 만드는 과정
+          """
+        x_scaled = min_max_scalar.fit_transform(x.astype(float))
+        """
+         정규화 normalization
+         많은 양의 데이터를 처리함에 있어 데이터의 범위(도메인)를 일치시키거나
+         분포(스케일)를 유사하게 만드는 작업
+         """
+        police_norm = pd.DataFrame(x_scaled, columns=self.crime_columns, index=police.index)
+        print(f'police_norm columns {police_norm.columns}')
+        police_norm[self.crime_rate_columns] = police[self.crime_rate_columns]
+        police_norm['범죄'] = np.sum(police_norm[self.crime_rate_columns], axis=1)
+        police_norm['검거'] = np.sum(police_norm[self.crime_columns], axis=1)
+        police_norm.to_csv('./saved_data/police_norm.csv', sep=',', encoding='UTF-8')
+
+
+
+
+
 
 
 
 if __name__ == '__main__':
     s = Service()
     # s.save_police_pos()
-    s.save_cctv_pop()
+    # s.save_cctv_pop()
+    s.save_police_norm()
 
 
 
