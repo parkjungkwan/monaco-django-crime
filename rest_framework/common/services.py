@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 from rest_framework.common.abstracts import PrinterBase, ReaderBase
+import googlemaps
 
 
 class Printer(PrinterBase):
@@ -27,3 +28,6 @@ class Reader(ReaderBase):
 
     def json(self, file) -> object:
         return json.load(open(f'{self.new_file(file)}.json', encoding='UTF-8'))
+
+    def gmaps(self) -> object:
+        return googlemaps.Client(key='')

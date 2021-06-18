@@ -20,7 +20,22 @@ class Service(Reader):
         f.context = './data/'
         f.fname = 'crime_in_seoul'
         crime = r.csv(f)
-        p.dframe(crime)
+        # p.dframe(crime)
+        station_names = []
+        for name in crime['관서명']:
+            station_names.append('서울'+str(name[:-1]+'경찰서'))
+        station_addrs = []
+        station_lats = []
+        station_lngs = []
+        gmaps = r.gmaps()
+        for name in station_names:
+            t = gmaps.geocode(name, language='ko')
+            station_addrs.append(t[0].get('formatted_address'))
+            t_loc = t[0].get('geometry')
+            station_lats.append(t_loc['location']['lat'])
+            station_lngs.append(t_loc['location']['lng'])
+            print(f'name{t[0].get("formatted_address")}')
+
 
 if __name__ == '__main__':
     s = Service()
