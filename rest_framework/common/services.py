@@ -24,7 +24,7 @@ class Reader(ReaderBase):
         return pd.read_csv(f'{self.new_file(file)}.csv', encoding='UTF-8', thousands=',')
 
     def xls(self, file, header, usecols) -> object:
-        return pd.read_excel(f'{self.new_file(file)}.xls', encoding='UTF-8', header=header, usecols=usecols)
+        return pd.read_excel(f'{self.new_file(file)}.xls', header=header, usecols=usecols)
 
     def json(self, file) -> object:
         return json.load(open(f'{self.new_file(file)}.json', encoding='UTF-8'))
