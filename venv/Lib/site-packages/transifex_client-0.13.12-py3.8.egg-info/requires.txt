@@ -1,0 +1,5 @@
+urllib3<2.0.0,>=1.24.2
+six<2.0.0
+requests<3.0.0,>=2.19.1
+python-slugify<5.0.0
+gitpython<4.0.0
