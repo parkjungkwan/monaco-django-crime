@@ -1,15 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	    <title>Error Rendering Schema</title>
-	</head>
-    <body>
-
+    <title>Error Rendering Schema</title>
+</head>
+<body>
 
 
 <h1>Error</h1>
@@ -20,13 +19,13 @@
 
 
 {% if debug is True %}
-<hr />
+<hr/>
 <h2>Additional Information</h2>
 <p>Note: You are seeing this message because <code>DEBUG==True</code>.</p>
 
 <p>Seeing this page is <em>usually</em> a configuration error: are your
-<code>DEFAULT_AUTHENTICATION_CLASSES</code> or <code>DEFAULT_PERMISSION_CLASSES</code>
-being applied unexpectedly?</p>
+    <code>DEFAULT_AUTHENTICATION_CLASSES</code> or <code>DEFAULT_PERMISSION_CLASSES</code>
+    being applied unexpectedly?</p>
 
 <p>Your response status code is: <code>{{ response.status_code }}</code></p>
 
@@ -45,7 +44,7 @@ being applied unexpectedly?</p>
 
 
 <p>Most commonly the intended solution is to disable authentication and permissions
-when including the docs urls:</p>
+    when including the docs urls:</p>
 
 <pre>
    path('docs/', include_docs_urls(title='Your API',
@@ -57,15 +56,14 @@ when including the docs urls:</p>
 <h2>Overriding this template</h2>
 
 <p>If you wish access to your docs to be authenticated you may override this template
-at <code>rest_framework/docs/error.html</code>.</p>
+    at <code>rest_framework/docs/error.html</code>.</p>
 
 <p>The available context is: <code>data</code> the error dict above, <code>request</code>,
-<code>response</code> and the <code>debug</code> flag.</p>
+    <code>response</code> and the <code>debug</code> flag.</p>
 
 {% endif %}
 
 
-
-        <script src="{% static 'rest_framework/js/jquery-3.5.1.min.js' %}"></script>
-    </body>
+<script src="{% static 'rest_framework/js/jquery-3.5.1.min.js' %}"></script>
+</body>
 </html>

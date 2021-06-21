@@ -244,6 +244,7 @@ class Service(Reader):
         file.context = './saved_data/'
         file.fname = 'police_pos'
         police_pos = reader.csv(file)
+        # 시각화
         station_names = []
         for name in crime['관서명']:
             station_names.append('서울' + str(name[:-1] + '경찰서'))

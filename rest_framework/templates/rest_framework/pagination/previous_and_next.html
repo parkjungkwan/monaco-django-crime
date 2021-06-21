@@ -1,21 +1,21 @@
 <ul class="pager">
-  {% if previous_url %}
+    {% if previous_url %}
     <li class="previous">
-      <a href="{{ previous_url }}">&laquo; Previous</a>
+        <a href="{{ previous_url }}">&laquo; Previous</a>
     </li>
-  {% else %}
+    {% else %}
     <li class="previous disabled">
-      <a href="#">&laquo; Previous</a>
+        <a href="#">&laquo; Previous</a>
     </li>
-  {% endif %}
+    {% endif %}
 
-  {% if next_url %}
+    {% if next_url %}
     <li class="next">
-      <a href="{{ next_url }}">Next &raquo;</a>
+        <a href="{{ next_url }}">Next &raquo;</a>
     </li>
-  {% else %}
+    {% else %}
     <li class="next disabled">
-      <a href="#">Next &raquo;</a>
+        <a href="#">Next &raquo;</a>
     </li>
-  {% endif %}
+    {% endif %}
 </ul>

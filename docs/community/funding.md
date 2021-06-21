@@ -107,9 +107,11 @@ form.signup {
 
 # Funding
 
-If you use REST framework commercially we strongly encourage you to invest in its continued development by signing up for a paid plan.
+If you use REST framework commercially we strongly encourage you to invest in its continued development by signing up
+for a paid plan.
 
-**We believe that collaboratively funded software can offer outstanding returns on investment, by encouraging our users to collectively share the cost of development.**
+**We believe that collaboratively funded software can offer outstanding returns on investment, by encouraging our users
+to collectively share the cost of development.**
 
 Signing up for a paid plan will:
 
@@ -117,15 +119,21 @@ Signing up for a paid plan will:
 * Allow more time to be invested in documentation, issue triage, and community support.
 * Safeguard the future development of REST framework.
 
-REST framework continues to be open-source and permissively licensed, but we firmly believe it is in the commercial best-interest for users of the project to invest in its ongoing development.
+REST framework continues to be open-source and permissively licensed, but we firmly believe it is in the commercial
+best-interest for users of the project to invest in its ongoing development.
 
 ---
 
 ## What funding has enabled so far
 
-* The [3.4](https://www.django-rest-framework.org/community/3.4-announcement/) and [3.5](https://www.django-rest-framework.org/community/3.5-announcement/) releases, including schema generation for both Swagger and RAML, a Python client library, a Command Line client, and addressing of a large number of outstanding issues.
-* The [3.6](https://www.django-rest-framework.org/community/3.6-announcement/) release, including  JavaScript client library, and API documentation, complete with auto-generated code samples.
-* The [3.7 release](https://www.django-rest-framework.org/community/3.7-announcement/), made possible due to our collaborative funding model, focuses on improvements to schema generation and the interactive API documentation.
+* The [3.4](https://www.django-rest-framework.org/community/3.4-announcement/)
+  and [3.5](https://www.django-rest-framework.org/community/3.5-announcement/) releases, including schema generation for
+  both Swagger and RAML, a Python client library, a Command Line client, and addressing of a large number of outstanding
+  issues.
+* The [3.6](https://www.django-rest-framework.org/community/3.6-announcement/) release, including JavaScript client
+  library, and API documentation, complete with auto-generated code samples.
+* The [3.7 release](https://www.django-rest-framework.org/community/3.7-announcement/), made possible due to our
+  collaborative funding model, focuses on improvements to schema generation and the interactive API documentation.
 * The recent [3.8 release](https://www.django-rest-framework.org/community/3.8-announcement/).
 * Tom Christie, the creator of Django REST framework, working on the project full-time.
 * Around 80-90 issues and pull requests closed per month since Tom Christie started working on the project full-time.
@@ -136,11 +144,13 @@ REST framework continues to be open-source and permissively licensed, but we fir
 
 ## What future funding will enable
 
-* Realtime API support, using WebSockets. This will consist of documentation and support for using REST framework together with Django Channels, plus integrating WebSocket support into the client libraries.
+* Realtime API support, using WebSockets. This will consist of documentation and support for using REST framework
+  together with Django Channels, plus integrating WebSocket support into the client libraries.
 * Better authentication defaults, possibly bringing JWT & CORs support into the core package.
 * Securing the community & operations manager position long-term.
 * Opening up and securing a part-time position to focus on ticket triage and resolution.
-* Paying for development time on building API client libraries in a range of programming languages. These would be integrated directly into the upcoming API documentation.
+* Paying for development time on building API client libraries in a range of programming languages. These would be
+  integrated directly into the upcoming API documentation.
 
 Sign up for a paid plan today, and help ensure that REST framework becomes a sustainable, full-time funded project.
 
@@ -154,14 +164,13 @@ Sign up for a paid plan today, and help ensure that REST framework becomes a sus
 
 &nbsp;
 
->  The number one feature of the Python programming language is its community. Such a community is only possible because of the Open Source nature of the language and all the culture that comes from it. Building great Open Source projects require great minds. Given that, we at Vinta are not only proud to sponsor the team behind DRF but we also recognize the ROI that comes from it.
+> The number one feature of the Python programming language is its community. Such a community is only possible because of the Open Source nature of the language and all the culture that comes from it. Building great Open Source projects require great minds. Given that, we at Vinta are not only proud to sponsor the team behind DRF but we also recognize the ROI that comes from it.
 >
 > &mdash; Filipe Ximenes, Vinta Software
 
 &nbsp;
 
->  It's really awesome that this project continues to endure. The code base is top notch and the maintainers are committed to the highest level of quality.
-DRF is one of the core reasons why Django is top choice among web frameworks today. In my opinion, it sets the standard for rest frameworks for the development community at large.
+> It's really awesome that this project continues to endure. The code base is top notch and the maintainers are committed to the highest level of quality. DRF is one of the core reasons why Django is top choice among web frameworks today. In my opinion, it sets the standard for rest frameworks for the development community at large.
 >
 > &mdash; Andrew Conti, Django REST framework user
 
@@ -171,7 +180,8 @@ DRF is one of the core reasons why Django is top choice among web frameworks tod
 
 This subscription is recommended for individuals with an interest in seeing REST framework continue to&nbsp;improve.
 
-If you are using REST framework as a full-time employee, consider recommending that your company takes out a [corporate&nbsp;plan](#corporate-plans).
+If you are using REST framework as a full-time employee, consider recommending that your company takes out
+a [corporate&nbsp;plan](#corporate-plans).
 
 <div class="pricing">
                 <div class="span4">
@@ -217,9 +227,11 @@ If you are using REST framework as a full-time employee, consider recommending t
 
 These subscriptions are recommended for companies and organizations using REST framework either publicly or privately.
 
-In exchange for funding you'll also receive advertising space on our site, allowing you to **promote your company or product to many tens of thousands of developers worldwide**.
+In exchange for funding you'll also receive advertising space on our site, allowing you to **promote your company or
+product to many tens of thousands of developers worldwide**.
 
-Our professional and premium plans also include **priority support**. At any time your engineers can escalate an issue or discussion group thread, and we'll ensure it gets a guaranteed response within the next working day.
+Our professional and premium plans also include **priority support**. At any time your engineers can escalate an issue
+or discussion group thread, and we'll ensure it gets a guaranteed response within the next working day.
 
 <div class="pricing">
                 <div class="span4">
@@ -335,13 +347,16 @@ Our professional and premium plans also include **priority support**. At any tim
 
 Once you've signed up, we will contact you via email and arrange your ad placements on the site.
 
-For further enquires please contact <a href=mailto:funding@django-rest-framework.org>funding@django-rest-framework.org</a>.
+For further enquires please contact <a href=mailto:funding@django-rest-framework.org>
+funding@django-rest-framework.org</a>.
 
 ---
 
 ## Accountability
 
-In an effort to keep the project as transparent as possible, we are releasing [monthly progress reports](https://www.encode.io/reports/march-2018/) and regularly include financial reports and cost breakdowns.
+In an effort to keep the project as transparent as possible, we are
+releasing [monthly progress reports](https://www.encode.io/reports/march-2018/) and regularly include financial reports
+and cost breakdowns.
 
 <!-- Begin MailChimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
@@ -375,16 +390,19 @@ In an effort to keep the project as transparent as possible, we are releasing [m
 ## Frequently asked questions
 
 **Q: Can you issue monthly invoices?**
-A: Yes, we are happy to issue monthly invoices. Please just <a href=mailto:funding@django-rest-framework.org>email us</a> and let us know who to issue the invoice to (name and address) and which email address to send it to each month.
+A: Yes, we are happy to issue monthly invoices. Please just <a href=mailto:funding@django-rest-framework.org>email
+us</a> and let us know who to issue the invoice to (name and address) and which email address to send it to each month.
 
 **Q: Does sponsorship include VAT?**
 A: Sponsorship is VAT exempt.
 
 **Q: Do I have to sign up for a certain time period?**
-A: No, we appreciate your support for any time period that is convenient for you. Also, you can cancel your sponsorship anytime.
+A: No, we appreciate your support for any time period that is convenient for you. Also, you can cancel your sponsorship
+anytime.
 
 **Q: Can I pay yearly? Can I pay upfront fox X amount of months at a time?**
-A: We are currently only set up to accept monthly payments. However, if you'd like to support Django REST framework and you can only do yearly/upfront payments, we are happy to work with you and figure out a convenient solution.
+A: We are currently only set up to accept monthly payments. However, if you'd like to support Django REST framework and
+you can only do yearly/upfront payments, we are happy to work with you and figure out a convenient solution.
 
 **Q: Are you only looking for corporate sponsors?**
 A: No, we value individual sponsors just as much as corporate sponsors and appreciate any kind of support.

@@ -4,26 +4,23 @@
 >
 > &mdash; Roy Fielding, [REST APIs must be hypertext driven][cite]
 
-REST framework provides built-in support for generating OpenAPI schemas, which
-can be used with tools that allow you to build API documentation.
+REST framework provides built-in support for generating OpenAPI schemas, which can be used with tools that allow you to
+build API documentation.
 
 There are also a number of great third-party documentation packages available.
 
 ## Generating documentation from OpenAPI schemas
 
-There are a number of packages available that allow you to generate HTML
-documentation pages from OpenAPI schemas.
+There are a number of packages available that allow you to generate HTML documentation pages from OpenAPI schemas.
 
 Two popular options are [Swagger UI][swagger-ui] and [ReDoc][redoc].
 
-Both require little more than the location of your static schema file or
-dynamic `SchemaView` endpoint.
+Both require little more than the location of your static schema file or dynamic `SchemaView` endpoint.
 
 ### A minimal example with Swagger UI
 
-Assuming you've followed the example from the schemas documentation for routing
-a dynamic `SchemaView`, a minimal Django template for using Swagger UI might be
-this:
+Assuming you've followed the example from the schemas documentation for routing a dynamic `SchemaView`, a minimal Django
+template for using Swagger UI might be this:
 
 ```html
 <!DOCTYPE html>
@@ -77,9 +74,8 @@ See the [Swagger UI documentation][swagger-ui] for advanced usage.
 
 ### A minimal example with ReDoc.
 
-Assuming you've followed the example from the schemas documentation for routing
-a dynamic `SchemaView`, a minimal Django template for using ReDoc might be
-this:
+Assuming you've followed the example from the schemas documentation for routing a dynamic `SchemaView`, a minimal Django
+template for using ReDoc might be this:
 
 ```html
 <!DOCTYPE html>
@@ -130,8 +126,8 @@ There are a number of mature third-party packages for providing API documentatio
 
 #### drf-yasg - Yet Another Swagger Generator
 
-[drf-yasg][drf-yasg] is a [Swagger][swagger] generation tool implemented without using the schema generation provided
-by Django Rest Framework.
+[drf-yasg][drf-yasg] is a [Swagger][swagger] generation tool implemented without using the schema generation provided by
+Django Rest Framework.
 
 It aims to implement as much of the [OpenAPI][open-api] specification as possible - nested schemas, named models,
 response bodies, enum/pattern/min/max validators, form parameters, etc. - and to generate documents usable with code
@@ -139,13 +135,12 @@ generation tools like `swagger-codegen`.
 
 This also translates into a very useful interactive documentation viewer in the form of `swagger-ui`:
 
-
 ![Screenshot - drf-yasg][image-drf-yasg]
 
 #### drf-spectacular - Sane and flexible OpenAPI 3.0 schema generation for Django REST framework
 
-[drf-spectacular][drf-spectacular] is a [OpenAPI 3][open-api] schema generation tool with explicit focus on extensibility,
-customizability and client generation. Usage patterns are very similar to [drf-yasg][drf-yasg].
+[drf-spectacular][drf-spectacular] is a [OpenAPI 3][open-api] schema generation tool with explicit focus on
+extensibility, customizability and client generation. Usage patterns are very similar to [drf-yasg][drf-yasg].
 
 It aims to extract as much schema information as possible, while providing decorators and extensions for easy
 customization. There is explicit support for [swagger-codegen][swagger], [SwaggerUI][swagger-ui] and [Redoc][redoc],
@@ -156,7 +151,8 @@ documentation and more. Several popular plugins for DRF are supported out-of-the
 
 ## Self describing APIs
 
-The browsable API that REST framework provides makes it possible for your API to be entirely self describing.  The documentation for each API endpoint can be provided simply by visiting the URL in your browser.
+The browsable API that REST framework provides makes it possible for your API to be entirely self describing. The
+documentation for each API endpoint can be provided simply by visiting the URL in your browser.
 
 ![Screenshot - Self describing API][image-self-describing-api]
 
@@ -164,17 +160,21 @@ The browsable API that REST framework provides makes it possible for your API to
 
 #### Setting the title
 
-The title that is used in the browsable API is generated from the view class name or function name.  Any trailing `View` or `ViewSet` suffix is stripped, and the string is whitespace separated on uppercase/lowercase boundaries or underscores.
+The title that is used in the browsable API is generated from the view class name or function name. Any trailing `View`
+or `ViewSet` suffix is stripped, and the string is whitespace separated on uppercase/lowercase boundaries or
+underscores.
 
 For example, the view `UserListView`, will be named `User List` when presented in the browsable API.
 
-When working with viewsets, an appropriate suffix is appended to each generated view.  For example, the view set `UserViewSet` will generate views named `User List` and `User Instance`.
+When working with viewsets, an appropriate suffix is appended to each generated view. For example, the view
+set `UserViewSet` will generate views named `User List` and `User Instance`.
 
 #### Setting the description
 
 The description in the browsable API is generated from the docstring of the view or viewset.
 
-If the python `Markdown` library is installed, then [markdown syntax][markdown] may be used in the docstring, and will be converted to HTML in the browsable API.  For example:
+If the python `Markdown` library is installed, then [markdown syntax][markdown] may be used in the docstring, and will
+be converted to HTML in the browsable API. For example:
 
     class AccountListView(views.APIView):
         """
@@ -185,15 +185,21 @@ If the python `Markdown` library is installed, then [markdown syntax][markdown] 
         [ref]: http://example.com/activating-accounts
         """
 
-Note that when using viewsets the basic docstring is used for all generated views.  To provide descriptions for each view, such as for the list and retrieve views, use docstring sections as described in [Schemas as documentation: Examples][schemas-examples].
+Note that when using viewsets the basic docstring is used for all generated views. To provide descriptions for each
+view, such as for the list and retrieve views, use docstring sections as described
+in [Schemas as documentation: Examples][schemas-examples].
 
 #### The `OPTIONS` method
 
-REST framework APIs also support programmatically accessible descriptions, using the `OPTIONS` HTTP method.  A view will respond to an `OPTIONS` request with metadata including the name, description, and the various media types it accepts and responds with.
+REST framework APIs also support programmatically accessible descriptions, using the `OPTIONS` HTTP method. A view will
+respond to an `OPTIONS` request with metadata including the name, description, and the various media types it accepts
+and responds with.
 
-When using the generic views, any `OPTIONS` requests will additionally respond with metadata regarding any `POST` or `PUT` actions available, describing which fields are on the serializer.
+When using the generic views, any `OPTIONS` requests will additionally respond with metadata regarding any `POST`
+or `PUT` actions available, describing which fields are on the serializer.
 
-You can modify the response behavior to `OPTIONS` requests by overriding the `options` view method and/or by providing a custom Metadata class.  For example:
+You can modify the response behavior to `OPTIONS` requests by overriding the `options` view method and/or by providing a
+custom Metadata class. For example:
 
     def options(self, request, *args, **kwargs):
         """
@@ -212,23 +218,36 @@ See [the Metadata docs][metadata-docs] for more details.
 
 To be fully RESTful an API should present its available actions as hypermedia controls in the responses that it sends.
 
-In this approach, rather than documenting the available API endpoints up front, the description instead concentrates on the *media types* that are used.  The available actions that may be taken on any given URL are not strictly fixed, but are instead made available by the presence of link and form controls in the returned document.
+In this approach, rather than documenting the available API endpoints up front, the description instead concentrates on
+the *media types* that are used. The available actions that may be taken on any given URL are not strictly fixed, but
+are instead made available by the presence of link and form controls in the returned document.
 
-To implement a hypermedia API you'll need to decide on an appropriate media type for the API, and implement a custom renderer and parser for that media type.  The [REST, Hypermedia & HATEOAS][hypermedia-docs] section of the documentation includes pointers to background reading, as well as links to various hypermedia formats.
+To implement a hypermedia API you'll need to decide on an appropriate media type for the API, and implement a custom
+renderer and parser for that media type. The [REST, Hypermedia & HATEOAS][hypermedia-docs] section of the documentation
+includes pointers to background reading, as well as links to various hypermedia formats.
 
 [cite]: https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven
 
 [hypermedia-docs]: rest-hypermedia-hateoas.md
+
 [metadata-docs]: ../api-guide/metadata.md
+
 [schemas-examples]: ../api-guide/schemas.md#examples
 
 [image-drf-yasg]: ../img/drf-yasg.png
+
 [image-self-describing-api]: ../img/self-describing.png
 
 [drf-yasg]: https://github.com/axnsan12/drf-yasg/
+
 [drf-spectacular]: https://github.com/tfranzel/drf-spectacular/
+
 [markdown]: https://daringfireball.net/projects/markdown/syntax
+
 [open-api]: https://openapis.org/
+
 [redoc]: https://github.com/Rebilly/ReDoc
+
 [swagger]: https://swagger.io/
+
 [swagger-ui]: https://swagger.io/tools/swagger-ui/

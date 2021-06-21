@@ -1,6 +1,6 @@
 ---
 source:
-    - metadata.py
+- metadata.py
 ---
 
 # Metadata
@@ -9,9 +9,11 @@ source:
 >
 > &mdash; [RFC7231, Section 4.3.7.][cite]
 
-REST framework includes a configurable mechanism for determining how your API should respond to `OPTIONS` requests. This allows you to return API schema or other resource information.
+REST framework includes a configurable mechanism for determining how your API should respond to `OPTIONS` requests. This
+allows you to return API schema or other resource information.
 
-There are not currently any widely adopted conventions for exactly what style of response should be returned for HTTP `OPTIONS` requests, so we provide an ad-hoc style that returns some useful information.
+There are not currently any widely adopted conventions for exactly what style of response should be returned for
+HTTP `OPTIONS` requests, so we provide an ad-hoc style that returns some useful information.
 
 Here's an example response that demonstrates the information that is returned by default.
 
@@ -62,11 +64,13 @@ Or you can set the metadata class individually for a view:
                 ...
             })
 
-The REST framework package only includes a single metadata class implementation, named `SimpleMetadata`. If you want to use an alternative style you'll need to implement a custom metadata class.
+The REST framework package only includes a single metadata class implementation, named `SimpleMetadata`. If you want to
+use an alternative style you'll need to implement a custom metadata class.
 
 ## Creating schema endpoints
 
-If you have specific requirements for creating schema endpoints that are accessed with regular `GET` requests, you might consider re-using the metadata API for doing so.
+If you have specific requirements for creating schema endpoints that are accessed with regular `GET` requests, you might
+consider re-using the metadata API for doing so.
 
 For example, the following additional route could be used on a viewset to provide a linkable schema endpoint.
 
@@ -76,15 +80,18 @@ For example, the following additional route could be used on a viewset to provid
         data = meta.determine_metadata(request, self)
         return Response(data)
 
-There are a couple of reasons that you might choose to take this approach, including that `OPTIONS` responses [are not cacheable][no-options].
+There are a couple of reasons that you might choose to take this approach, including that `OPTIONS`
+responses [are not cacheable][no-options].
 
 ---
 
 # Custom metadata classes
 
-If you want to provide a custom metadata class you should override `BaseMetadata` and implement the `determine_metadata(self, request, view)` method.
+If you want to provide a custom metadata class you should override `BaseMetadata` and implement
+the `determine_metadata(self, request, view)` method.
 
-Useful things that you might want to do could include returning schema information, using a format such as [JSON schema][json-schema], or returning debug information to admin users.
+Useful things that you might want to do could include returning schema information, using a format such
+as [JSON schema][json-schema], or returning debug information to admin users.
 
 ## Example
 
@@ -113,12 +120,17 @@ The following third party packages provide additional metadata implementations.
 
 ## DRF-schema-adapter
 
-[drf-schema-adapter][drf-schema-adapter] is a set of tools that makes it easier to provide schema information to frontend frameworks and libraries. It provides a metadata mixin as well as 2 metadata classes and several adapters suitable to generate [json-schema][json-schema] as well as schema information readable by various libraries.
+[drf-schema-adapter][drf-schema-adapter] is a set of tools that makes it easier to provide schema information to
+frontend frameworks and libraries. It provides a metadata mixin as well as 2 metadata classes and several adapters
+suitable to generate [json-schema][json-schema] as well as schema information readable by various libraries.
 
-You can also write your own adapter to work with your specific frontend.
-If you wish to do so, it also provides an exporter that can export those schema information to json files.
+You can also write your own adapter to work with your specific frontend. If you wish to do so, it also provides an
+exporter that can export those schema information to json files.
 
 [cite]: https://tools.ietf.org/html/rfc7231#section-4.3.7
+
 [no-options]: https://www.mnot.net/blog/2012/10/29/NO_OPTIONS
+
 [json-schema]: https://json-schema.org/
+
 [drf-schema-adapter]: https://github.com/drf-forms/drf-schema-adapter

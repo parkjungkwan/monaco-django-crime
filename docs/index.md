@@ -27,6 +27,7 @@
     <a href="https://pypi.org/project/djangorestframework/">
         <img src="https://img.shields.io/pypi/v/djangorestframework.svg" class="status-badge">
     </a>
+
 </p>
 
 ---
@@ -49,19 +50,22 @@ Django REST framework is a powerful and flexible toolkit for building Web APIs.
 Some reasons you might want to use REST framework:
 
 * The [Web browsable API][sandbox] is a huge usability win for your developers.
-* [Authentication policies][authentication] including packages for [OAuth1a][oauth1-section] and [OAuth2][oauth2-section].
-* [Serialization][serializers] that supports both [ORM][modelserializer-section] and [non-ORM][serializer-section] data sources.
-* Customizable all the way down - just use [regular function-based views][functionview-section] if you don't need the [more][generic-views] [powerful][viewsets] [features][routers].
+* [Authentication policies][authentication] including packages for [OAuth1a][oauth1-section]
+  and [OAuth2][oauth2-section].
+* [Serialization][serializers] that supports both [ORM][modelserializer-section] and [non-ORM][serializer-section] data
+  sources.
+* Customizable all the way down - just use [regular function-based views][functionview-section] if you don't need
+  the [more][generic-views] [powerful][viewsets] [features][routers].
 * Extensive documentation, and [great community support][group].
-* Used and trusted by internationally recognised companies including [Mozilla][mozilla], [Red Hat][redhat], [Heroku][heroku], and [Eventbrite][eventbrite].
+* Used and trusted by internationally recognised companies including [Mozilla][mozilla], [Red Hat][redhat]
+  , [Heroku][heroku], and [Eventbrite][eventbrite].
 
 ---
 
 ## Funding
 
-REST framework is a *collaboratively funded project*. If you use
-REST framework commercially we strongly encourage you to invest in its
-continued development by **[signing up for a paid plan][funding]**.
+REST framework is a *collaboratively funded project*. If you use REST framework commercially we strongly encourage you
+to invest in its continued development by **[signing up for a paid plan][funding]**.
 
 *Every single sign-up helps us make REST framework long-term financially sustainable.*
 
@@ -75,7 +79,14 @@ continued development by **[signing up for a paid plan][funding]**.
 </ul>
 <div style="clear: both; padding-bottom: 20px;"></div>
 
-*Many thanks to all our [wonderful sponsors][sponsors], and in particular to our premium backers, [Sentry](https://getsentry.com/welcome/), [Stream](https://getstream.io/?utm_source=drf&utm_medium=banner&utm_campaign=drf), [ESG](https://software.esg-usa.com/), [Rollbar](https://rollbar.com/?utm_source=django&utm_medium=sponsorship&utm_campaign=freetrial), [Cadre](https://cadre.com), [Kloudless](https://hubs.ly/H0f30Lf0), [Lights On Software](https://lightsonsoftware.com), [Retool](https://retool.com/?utm_source=djangorest&utm_medium=sponsorship), and [bit.io](https://bit.io/jobs?utm_source=DRF&utm_medium=sponsor&utm_campaign=DRF_sponsorship).*
+*Many thanks to all our [wonderful sponsors][sponsors], and in particular to our premium
+backers, [Sentry](https://getsentry.com/welcome/)
+, [Stream](https://getstream.io/?utm_source=drf&utm_medium=banner&utm_campaign=drf)
+, [ESG](https://software.esg-usa.com/)
+, [Rollbar](https://rollbar.com/?utm_source=django&utm_medium=sponsorship&utm_campaign=freetrial)
+, [Cadre](https://cadre.com), [Kloudless](https://hubs.ly/H0f30Lf0), [Lights On Software](https://lightsonsoftware.com)
+, [Retool](https://retool.com/?utm_source=djangorest&utm_medium=sponsorship),
+and [bit.io](https://bit.io/jobs?utm_source=DRF&utm_medium=sponsor&utm_campaign=DRF_sponsorship).*
 
 ---
 
@@ -86,8 +97,7 @@ REST framework requires the following:
 * Python (3.5, 3.6, 3.7, 3.8, 3.9)
 * Django (2.2, 3.0, 3.1, 3.2)
 
-We **highly recommend** and only officially support the latest patch release of
-each Python and Django series.
+We **highly recommend** and only officially support the latest patch release of each Python and Django series.
 
 The following packages are optional:
 
@@ -116,7 +126,8 @@ Add `'rest_framework'` to your `INSTALLED_APPS` setting.
         'rest_framework',
     ]
 
-If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views.  Add the following to your root `urls.py` file.
+If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views.
+Add the following to your root `urls.py` file.
 
     urlpatterns = [
         ...
@@ -131,7 +142,8 @@ Let's take a look at a quick example of using REST framework to build a simple m
 
 We'll create a read-write API for accessing information on the users of our project.
 
-Any global settings for a REST framework API are kept in a single configuration dictionary named `REST_FRAMEWORK`.  Start off by adding the following to your `settings.py` module:
+Any global settings for a REST framework API are kept in a single configuration dictionary named `REST_FRAMEWORK`. Start
+off by adding the following to your `settings.py` module:
 
     REST_FRAMEWORK = {
         # Use Django's standard `django.contrib.auth` permissions,
@@ -143,8 +155,7 @@ Any global settings for a REST framework API are kept in a single configuration 
 
 Don't forget to make sure you've also added `rest_framework` to your `INSTALLED_APPS`.
 
-We're ready to create our API now.
-Here's our project's root `urls.py` module:
+We're ready to create our API now. Here's our project's root `urls.py` module:
 
     from django.urls import path, include
     from django.contrib.auth.models import User
@@ -172,93 +183,121 @@ Here's our project's root `urls.py` module:
         path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
     ]
 
-You can now open the API in your browser at [http://127.0.0.1:8000/](http://127.0.0.1:8000/), and view your new 'users' API. If you use the login control in the top right corner you'll also be able to add, create and delete users from the system.
+You can now open the API in your browser at [http://127.0.0.1:8000/](http://127.0.0.1:8000/), and view your new 'users'
+API. If you use the login control in the top right corner you'll also be able to add, create and delete users from the
+system.
 
 ## Quickstart
 
-Can't wait to get started? The [quickstart guide][quickstart] is the fastest way to get up and running, and building APIs with REST framework.
+Can't wait to get started? The [quickstart guide][quickstart] is the fastest way to get up and running, and building
+APIs with REST framework.
 
 ## Development
 
-See the [Contribution guidelines][contributing] for information on how to clone
-the repository, run the test suite and contribute changes back to REST
-Framework.
+See the [Contribution guidelines][contributing] for information on how to clone the repository, run the test suite and
+contribute changes back to REST Framework.
 
 ## Support
 
-For support please see the [REST framework discussion group][group], try the  `#restframework` channel on `irc.freenode.net`, search [the IRC archives][botbot], or raise a  question on [Stack Overflow][stack-overflow], making sure to include the ['django-rest-framework'][django-rest-framework-tag] tag.
+For support please see the [REST framework discussion group][group], try the  `#restframework` channel
+on `irc.freenode.net`, search [the IRC archives][botbot], or raise a question on [Stack Overflow][stack-overflow],
+making sure to include the ['django-rest-framework'][django-rest-framework-tag] tag.
 
-For priority support please sign up for a [professional or premium sponsorship plan](https://fund.django-rest-framework.org/topics/funding/).
+For priority support please sign up for
+a [professional or premium sponsorship plan](https://fund.django-rest-framework.org/topics/funding/).
 
 ## Security
 
-If you believe you’ve found something in Django REST framework which has security implications, please **do not raise the issue in a public forum**.
+If you believe you’ve found something in Django REST framework which has security implications, please **do not raise
+the issue in a public forum**.
 
-Send a description of the issue via email to [rest-framework-security@googlegroups.com][security-mail].  The project maintainers will then work with you to resolve any issues where required, prior to any public disclosure.
+Send a description of the issue via email to [rest-framework-security@googlegroups.com][security-mail]. The project
+maintainers will then work with you to resolve any issues where required, prior to any public disclosure.
 
 ## License
 
-Copyright © 2011-present, [Encode OSS Ltd](https://www.encode.io/).
-All rights reserved.
+Copyright © 2011-present, [Encode OSS Ltd](https://www.encode.io/). All rights reserved.
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+following conditions are met:
 
-* Redistributions of source code must retain the above copyright notice, this
-  list of conditions and the following disclaimer.
+* Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+  disclaimer.
 
-* Redistributions in binary form must reproduce the above copyright notice,
-  this list of conditions and the following disclaimer in the documentation
-  and/or other materials provided with the distribution.
+* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
+  disclaimer in the documentation and/or other materials provided with the distribution.
 
-* Neither the name of the copyright holder nor the names of its
-  contributors may be used to endorse or promote products derived from
-  this software without specific prior written permission.
+* Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products
+  derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 [mozilla]: https://www.mozilla.org/en-US/about/
+
 [redhat]: https://www.redhat.com/
+
 [heroku]: https://www.heroku.com/
+
 [eventbrite]: https://www.eventbrite.co.uk/about/
+
 [pyyaml]: https://pypi.org/project/PyYAML/
+
 [uriteemplate]: https://pypi.org/project/uritemplate/
+
 [markdown]: https://pypi.org/project/Markdown/
+
 [pygments]: https://pypi.org/project/Pygments/
+
 [django-filter]: https://pypi.org/project/django-filter/
+
 [django-guardian]: https://github.com/django-guardian/django-guardian
+
 [index]: .
+
 [oauth1-section]: api-guide/authentication/#django-rest-framework-oauth
+
 [oauth2-section]: api-guide/authentication/#django-oauth-toolkit
+
 [serializer-section]: api-guide/serializers#serializers
+
 [modelserializer-section]: api-guide/serializers#modelserializer
+
 [functionview-section]: api-guide/views#function-based-views
+
 [sandbox]: https://restframework.herokuapp.com/
+
 [sponsors]: https://fund.django-rest-framework.org/topics/funding/#our-sponsors
 
 [quickstart]: tutorial/quickstart.md
 
 [generic-views]: api-guide/generic-views.md
+
 [viewsets]: api-guide/viewsets.md
+
 [routers]: api-guide/routers.md
+
 [serializers]: api-guide/serializers.md
+
 [authentication]: api-guide/authentication.md
 
 [contributing]: community/contributing.md
+
 [funding]: community/funding.md
 
 [group]: https://groups.google.com/forum/?fromgroups#!forum/django-rest-framework
+
 [botbot]: https://botbot.me/freenode/restframework/
+
 [stack-overflow]: https://stackoverflow.com/
+
 [django-rest-framework-tag]: https://stackoverflow.com/questions/tagged/django-rest-framework
+
 [security-mail]: mailto:rest-framework-security@googlegroups.com
+
 [twitter]: https://twitter.com/_tomchristie

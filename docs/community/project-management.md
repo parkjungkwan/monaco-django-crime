@@ -7,13 +7,15 @@
 This document outlines our project management processes for REST framework.
 
 The aim is to ensure that the project has a high
-["bus factor"][bus-factor], and can continue to remain well supported for the foreseeable future. Suggestions for improvements to our process are welcome.
+["bus factor"][bus-factor], and can continue to remain well supported for the foreseeable future. Suggestions for
+improvements to our process are welcome.
 
 ---
 
 ## Maintenance team
 
-We have a quarterly maintenance cycle where new members may join the maintenance team. We currently cap the size of the team at 5 members, and may encourage folks to step out of the team for a cycle to allow new members to participate.
+We have a quarterly maintenance cycle where new members may join the maintenance team. We currently cap the size of the
+team at 5 members, and may encourage folks to step out of the team for a cycle to allow new members to participate.
 
 #### Current team
 
@@ -35,7 +37,8 @@ Each maintenance cycle is initiated by an issue being opened with the `Process` 
 
 Members of the maintenance team will be added as collaborators to the repository.
 
-The following template should be used for the description of the issue, and serves as the formal process for selecting the team.
+The following template should be used for the description of the issue, and serves as the formal process for selecting
+the team.
 
     This issue is for determining the maintenance team for the *** period.
 
@@ -78,7 +81,9 @@ Further notes for maintainers:
 * Each issue/pull request should have exactly one label once triaged.
 * Search for un-triaged issues with [is:open no:label][un-triaged].
 
-It should be noted that participating actively in the REST framework project clearly **does not require being part of the maintenance team**. Almost every import part of issue triage and project improvement can be actively worked on regardless of your collaborator status on the repository.
+It should be noted that participating actively in the REST framework project clearly **does not require being part of
+the maintenance team**. Almost every import part of issue triage and project improvement can be actively worked on
+regardless of your collaborator status on the repository.
 
 ---
 
@@ -90,7 +95,8 @@ The release manager is selected on every quarterly maintenance cycle.
 * The manager will then have the maintainer role added to PyPI package.
 * The previous manager will then have the maintainer role removed from the PyPI package.
 
-Our PyPI releases will be handled by either the current release manager, or by `@tomchristie`. Every release should have an open issue tagged with the `Release` label and marked against the appropriate milestone.
+Our PyPI releases will be handled by either the current release manager, or by `@tomchristie`. Every release should have
+an open issue tagged with the `Release` label and marked against the appropriate milestone.
 
 The following template should be used for the description of the issue, and serves as a release checklist.
 
@@ -124,21 +130,25 @@ The following template should be used for the description of the issue, and serv
 
     To modify this process for future releases make a pull request to the [project management](https://www.django-rest-framework.org/topics/project-management/) documentation.
 
-When pushing the release to PyPI ensure that your environment has been installed from our development `requirement.txt`, so that documentation and PyPI installs are consistently being built against a pinned set of packages.
+When pushing the release to PyPI ensure that your environment has been installed from our development `requirement.txt`,
+so that documentation and PyPI installs are consistently being built against a pinned set of packages.
 
 ---
 
 ## Translations
 
-The maintenance team are responsible for managing the translation packs include in REST framework. Translating the source strings into multiple languages is managed through the [transifex service][transifex-project].
+The maintenance team are responsible for managing the translation packs include in REST framework. Translating the
+source strings into multiple languages is managed through the [transifex service][transifex-project].
 
 ### Managing Transifex
 
-The [official Transifex client][transifex-client] is used to upload and download translations to Transifex. The client is installed using pip:
+The [official Transifex client][transifex-client] is used to upload and download translations to Transifex. The client
+is installed using pip:
 
     pip install transifex-client
 
-To use it you'll need a login to Transifex which has a password, and you'll need to have administrative access to the Transifex project. You'll need to create a `~/.transifexrc` file which contains your credentials.
+To use it you'll need a login to Transifex which has a password, and you'll need to have administrative access to the
+Transifex project. You'll need to create a `~/.transifexrc` file which contains your credentials.
 
     [https://www.transifex.com]
     username = ***
@@ -148,7 +158,8 @@ To use it you'll need a login to Transifex which has a password, and you'll need
 
 ### Upload new source files
 
-When any user visible strings are changed, they should be uploaded to Transifex so that the translators can start to translate them. To do this, just run:
+When any user visible strings are changed, they should be uploaded to Transifex so that the translators can start to
+translate them. To do this, just run:
 
     # 1. Update the source django.po file, which is the US English version.
     cd rest_framework
@@ -157,17 +168,21 @@ When any user visible strings are changed, they should be uploaded to Transifex 
     cd ..
     tx push -s
 
-When pushing source files, Transifex will update the source strings of a resource to match those from the new source file.
+When pushing source files, Transifex will update the source strings of a resource to match those from the new source
+file.
 
 Here's how differences between the old and new source files will be handled:
 
 * New strings will be added.
 * Modified strings will be added as well.
-* Strings which do not exist in the new source file will be removed from the database, along with their translations. If that source strings gets re-added later then [Transifex Translation Memory][translation-memory] will automatically include the translation string.
+* Strings which do not exist in the new source file will be removed from the database, along with their translations. If
+  that source strings gets re-added later then [Transifex Translation Memory][translation-memory] will automatically
+  include the translation string.
 
 ### Download translations
 
-When a translator has finished translating their work needs to be downloaded from Transifex into the REST framework repository. To do this, run:
+When a translator has finished translating their work needs to be downloaded from Transifex into the REST framework
+repository. To do this, run:
 
     # 3. Pull the translated django.po files from Transifex.
     tx pull -a --minimum-perc 10
@@ -179,9 +194,12 @@ When a translator has finished translating their work needs to be downloaded fro
 
 ## Project requirements
 
-All our test requirements are pinned to exact versions, in order to ensure that our test runs are reproducible. We maintain the requirements in the `requirements` directory. The requirements files are referenced from the `tox.ini` configuration file, ensuring we have a single source of truth for package versions used in testing.
+All our test requirements are pinned to exact versions, in order to ensure that our test runs are reproducible. We
+maintain the requirements in the `requirements` directory. The requirements files are referenced from the `tox.ini`
+configuration file, ensuring we have a single source of truth for package versions used in testing.
 
-Package upgrades should generally be treated as isolated pull requests. You can check if there are any packages available at a newer version, by using the `pip list --outdated`.
+Package upgrades should generally be treated as isolated pull requests. You can check if there are any packages
+available at a newer version, by using the `pip list --outdated`.
 
 ---
 
@@ -189,7 +207,8 @@ Package upgrades should generally be treated as isolated pull requests. You can 
 
 The PyPI package is owned by `@tomchristie`. As a backup `@j4mie` also has ownership of the package.
 
-If `@tomchristie` ceases to participate in the project then `@j4mie` has responsibility for handing over ownership duties.
+If `@tomchristie` ceases to participate in the project then `@j4mie` has responsibility for handing over ownership
+duties.
 
 #### Outstanding management & ownership issues
 
@@ -201,9 +220,15 @@ The following issues still need to be addressed:
 * Document ownership and management of the security mailing list.
 
 [bus-factor]: https://en.wikipedia.org/wiki/Bus_factor
+
 [un-triaged]: https://github.com/encode/django-rest-framework/issues?q=is%3Aopen+no%3Alabel
+
 [transifex-project]: https://www.transifex.com/projects/p/django-rest-framework/
+
 [transifex-client]: https://pypi.org/project/transifex-client/
+
 [translation-memory]: http://docs.transifex.com/guides/tm#let-tm-automatically-populate-translations
+
 [sandbox]: https://restframework.herokuapp.com/
+
 [mailing-list]: https://groups.google.com/forum/#!forum/django-rest-framework

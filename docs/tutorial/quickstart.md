@@ -46,21 +46,25 @@ The project layout should look like:
     ./tutorial/urls.py
     ./tutorial/wsgi.py
 
-It may look unusual that the application has been created within the project directory. Using the project's namespace avoids name clashes with external modules (a topic that goes outside the scope of the quickstart).
+It may look unusual that the application has been created within the project directory. Using the project's namespace
+avoids name clashes with external modules (a topic that goes outside the scope of the quickstart).
 
 Now sync your database for the first time:
 
     python manage.py migrate
 
-We'll also create an initial user named `admin` with a password of `password123`. We'll authenticate as that user later in our example.
+We'll also create an initial user named `admin` with a password of `password123`. We'll authenticate as that user later
+in our example.
 
     python manage.py createsuperuser --email admin@example.com --username admin
 
-Once you've set up a database and the initial user is created and ready to go, open up the app's directory and we'll get coding...
+Once you've set up a database and the initial user is created and ready to go, open up the app's directory and we'll get
+coding...
 
 ## Serializers
 
-First up we're going to define some serializers. Let's create a new module named `tutorial/quickstart/serializers.py` that we'll use for our data representations.
+First up we're going to define some serializers. Let's create a new module named `tutorial/quickstart/serializers.py`
+that we'll use for our data representations.
 
     from django.contrib.auth.models import User, Group
     from rest_framework import serializers
@@ -77,11 +81,12 @@ First up we're going to define some serializers. Let's create a new module named
             model = Group
             fields = ['url', 'name']
 
-Notice that we're using hyperlinked relations in this case with `HyperlinkedModelSerializer`.  You can also use primary key and various other relationships, but hyperlinking is good RESTful design.
+Notice that we're using hyperlinked relations in this case with `HyperlinkedModelSerializer`. You can also use primary
+key and various other relationships, but hyperlinking is good RESTful design.
 
 ## Views
 
-Right, we'd better write some views then.  Open `tutorial/quickstart/views.py` and get typing.
+Right, we'd better write some views then. Open `tutorial/quickstart/views.py` and get typing.
 
     from django.contrib.auth.models import User, Group
     from rest_framework import viewsets
@@ -108,11 +113,12 @@ Right, we'd better write some views then.  Open `tutorial/quickstart/views.py` a
 
 Rather than write multiple views we're grouping together all the common behavior into classes called `ViewSets`.
 
-We can easily break these down into individual views if we need to, but using viewsets keeps the view logic nicely organized as well as being very concise.
+We can easily break these down into individual views if we need to, but using viewsets keeps the view logic nicely
+organized as well as being very concise.
 
 ## URLs
 
-Okay, now let's wire up the API URLs.  On to `tutorial/urls.py`...
+Okay, now let's wire up the API URLs. On to `tutorial/urls.py`...
 
     from django.urls import include, path
     from rest_framework import routers
@@ -129,14 +135,19 @@ Okay, now let's wire up the API URLs.  On to `tutorial/urls.py`...
         path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
     ]
 
-Because we're using viewsets instead of views, we can automatically generate the URL conf for our API, by simply registering the viewsets with a router class.
+Because we're using viewsets instead of views, we can automatically generate the URL conf for our API, by simply
+registering the viewsets with a router class.
 
-Again, if we need more control over the API URLs we can simply drop down to using regular class-based views, and writing the URL conf explicitly.
+Again, if we need more control over the API URLs we can simply drop down to using regular class-based views, and writing
+the URL conf explicitly.
 
-Finally, we're including default login and logout views for use with the browsable API.  That's optional, but useful if your API requires authentication and you want to use the browsable API.
+Finally, we're including default login and logout views for use with the browsable API. That's optional, but useful if
+your API requires authentication and you want to use the browsable API.
 
 ## Pagination
-Pagination allows you to control how many objects per page are returned. To enable it add the following lines to `tutorial/settings.py`
+
+Pagination allows you to control how many objects per page are returned. To enable it add the following lines
+to `tutorial/settings.py`
 
     REST_FRAMEWORK = {
         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -158,7 +169,7 @@ Okay, we're done.
 
 ## Testing our API
 
-We're now ready to test the API we've built.  Let's fire up the server from the command line.
+We're now ready to test the API we've built. Let's fire up the server from the command line.
 
     python manage.py runserver
 
@@ -211,7 +222,6 @@ Or using the [httpie][httpie], command line tool...
         ]
     }
 
-
 Or directly through the browser, by going to the URL `http://127.0.0.1:8000/users/`...
 
 ![Quick start image][image]
@@ -220,9 +230,13 @@ If you're working through the browser, make sure to login using the control in t
 
 Great, that was easy!
 
-If you want to get a more in depth understanding of how REST framework fits together head on over to [the tutorial][tutorial], or start browsing the [API guide][guide].
+If you want to get a more in depth understanding of how REST framework fits together head on over
+to [the tutorial][tutorial], or start browsing the [API guide][guide].
 
 [image]: ../img/quickstart.png
+
 [tutorial]: 1-serialization.md
+
 [guide]: ../api-guide/requests.md
+
 [httpie]: https://github.com/jakubroztocil/httpie#installation
