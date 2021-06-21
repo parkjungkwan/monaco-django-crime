@@ -95,11 +95,11 @@ class Service():
         stations['구'].unique()
         # print(stations[stations['구']=='서울특별시'])
         # 12  SK네트웍스(주)효진주유소  1 서울특별시 성동구 동일로 129 (성수동2가)  1654  N  SK에너지  서울특별시
-        stations[stations['구'] == '서울특별시'] = '성동구'
+        stations.loc[stations['구']=='서울특별시', '구'] = '성동구'
         stations['구'].unique()
         # print(stations[stations['구'] == '특별시'])
         # 10     서현주유소  서울 특별시 도봉구 방학로 142 (방학동)  1524  Y  S-OIL  특별시
-        stations[stations['구'] == '특별시'] = '도봉구'
+        stations.loc[stations['구']=='특별시', '구'] = '성동구'
         stations['구'].unique()
         # print(stations[stations['가격'] == '-'])
         '''
@@ -109,17 +109,33 @@ class Service():
         13          송정주유소    서울특별시 강북구 인수봉로 185 (수유동)  -  N   자가상표   강북구
         '''
         stations = stations[stations['가격'] != '-']
-        # print(stations[stations['가격'] == '성동구'])
-        # 12       성동구  성동구  성동구  성동구  성동구  성동구
-        p = re.compile('^[0-9]+$')
-        temp_stations = []
-        for i in stations:
-            if p.match(stations['가격'][i]):
-                temp_stations.append(stations['가격'][i])
-        stations['가격'] = [ float(i) for i in temp_stations]
+        stations['가격'] = [ float(i) for i in stations['가격']]
         stations.reset_index(inplace=True)
         del stations['index']
-        printer.dframe(stations)
+        # printer.dframe(stations)
+        '''
+        ****************************************************************************************************
+        1. Target type 
+         <class 'pandas.core.frame.DataFrame'> 
+        2. Target column 
+         Index(['Oil_store', '주소', '가격', '셀프', '상표', '구'], dtype='object') 
+        3. Target 상위 1개 행
+                      Oil_store                      주소      가격 셀프      상표    구
+        0               오렌지주유소    서울 강동구 성안로 102 (성내동)  1554.0  N   SK에너지  강동구
+        1               구천면주유소   서울 강동구 구천면로 357 (암사동)  1556.0  N  현대오일뱅크  강동구
+        2       GS칼텍스㈜직영 신월주유소  서울 강동구 양재대로 1323 (성내동)  1559.0  N   GS칼텍스  강동구
+        3                광성주유소   서울 강동구 올림픽로 673 (천호동)  1578.0  N   S-OIL  강동구
+        4  (주)소모에너지엔테크놀러지성내주유소   서울 강동구 올림픽로 578 (성내동)  1588.0  Y   GS칼텍스  강동구 
+        4. Target null 의 갯수
+         Oil_store    0
+        주소           0
+        가격           0
+        셀프           0
+        상표           0
+        구            0
+        dtype: int64개
+        ****************************************************************************************************
+        '''
 
 
 
