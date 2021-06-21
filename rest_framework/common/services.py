@@ -1,7 +1,8 @@
 import json
 import pandas as pd
-from rest_framework.common.abstracts import PrinterBase, ReaderBase
+from rest_framework.common.abstracts import PrinterBase, ReaderBase, ScraperBase
 import googlemaps
+from selenium import webdriver
 
 
 class Printer(PrinterBase):
@@ -26,8 +27,21 @@ class Reader(ReaderBase):
     def xls(self, file, header, usecols) -> object:
         return pd.read_excel(f'{self.new_file(file)}.xls', header=header, usecols=usecols)
 
+
+
     def json(self, file) -> object:
         return json.load(open(f'{self.new_file(file)}.json', encoding='UTF-8'))
 
     def gmaps(self) -> object:
         return googlemaps.Client(key='')
+
+class Scraper(ScraperBase):
+
+    def driver(self) -> object:
+        return webdriver.Chrome('C:/Program Files/Google/Chrome/chromedriver')
+
+    def auto_login(self):
+        pass
+
+
+

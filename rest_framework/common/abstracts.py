@@ -23,3 +23,9 @@ class ReaderBase(metaclass=ABCMeta):
     @abstractmethod
     def json(self):
         pass
+
+class ScraperBase(metaclass=ABCMeta):
+
+    @abstractmethod
+    def driver(self):
+        pass
